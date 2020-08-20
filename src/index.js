@@ -32,7 +32,7 @@ io.on("connection", (socket) => {
 
   socket.on("sendLocation", (coords, callback) => {
     io.emit(
-      "message",
+      "locationMessage",
       `https://google.com/maps?q=${coords.latitude},${coords.longitude}`
     );
     callback();
@@ -41,6 +41,7 @@ io.on("connection", (socket) => {
   socket.on("disconnect", () => {
     io.emit("message", "A user has Left");
   });
+  
 });
 
 server.listen(port, () => {
